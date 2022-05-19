@@ -7,7 +7,6 @@ const loginRouter = require('./routes/login.routes');
 const regRouter = require('./routes/reg.routes');
 const logoutRouter = require('./routes/logout.routes');
 
-
 config(app);
 
 app.use('/registration', regRouter);
