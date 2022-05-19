@@ -9,7 +9,9 @@ const logoutRouter = require('./routes/logout.routes');
 
 config(app);
 
-app.use('/registration', regRouter);
+app.use('/reg', regRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
-app.listen(PORT, () => `Server started at port
+app.listen(PORT, () => {
+  console.log(`Server port ${PORT} at started.....`);
+});

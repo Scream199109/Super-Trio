@@ -2,7 +2,7 @@
   "name": "owls-2022-spb-assessment-2i",
   "version": "1.0.0",
   "description": "### Введение Необходимо создать mvp приложения управления персоналом. Пользователи твоего приложения смогут приглашать людей на собеседование, оставлять комментарии к анкетам, нанимать и увольнять сотрудников. <!-- Старайся применить по максимуму все изученные конвенции и стандарты. -->",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js --ignore ./sessions"
@@ -39,6 +39,6 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.16"
   }
 }
