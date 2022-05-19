@@ -12,4 +12,4 @@ config(app);
 app.use('/registration', regRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
-app.listen(PORT, () => `Server started at port ${PORT}...`);
+app.listen(PORT, () => `Server started at port
