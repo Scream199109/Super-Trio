@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { addUserAC } from '../../redux/actionCreators/userAC';
 
 function Registration(props) {
-  const navigation= useNavigate()
+  // const navigation= useNavigate()
   const dispatch = useDispatch();
   const addUser = (event) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ function Registration(props) {
     console.log('=======>', data);
     fetch('/reg', {
       method: 'POST',
-      headers: {"content-type": "application/json"},
+      headers: {"Content-type": "Application/json"},
       body: JSON.stringify(data)
     })
     .then(res => res.json())
@@ -47,7 +47,7 @@ function Registration(props) {
         </div>
       </div>
       </div>
-      <button type='submit' onClick={() => navigation(`/home`)} className='waves-effect waves-light btn-large brown lighten-2'>Зарегистрироваться</button>
+      <button type='submit' className='waves-effect waves-light btn-large brown lighten-2'>Зарегистрироваться</button>
     </form>
   </div>
   </>
