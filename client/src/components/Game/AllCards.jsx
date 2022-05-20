@@ -10,9 +10,7 @@ function AllCards(props) {
       .then(data => dispatch({ type: 'ADD_ALL_CARD', payload: data }))
   }, [])
   const { card } = useSelector(state => state.card)
-  console.log("🚀 ~ AllCards ~ card", card)
   const { allCard } = card
-  console.log("🚀 ~ AllCards ~ allCards", allCard)
 
   return (
     <>
