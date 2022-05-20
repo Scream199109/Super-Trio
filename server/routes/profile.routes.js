@@ -2,11 +2,11 @@ const router = require('express').Router();
 const { User } = require('../db/models');
 
 router.route('/')
-  .get((req, res) => {
-    User.findAll()
-      .then((allUsers) => res.json(allUsers))
-      .catch((error) => console.log(error));
+  .get(async (req, res) => {
+    const allUsers = await User.findAll();
+    res.status(200).json({ allUsers });
   });
+
 
 module.exports = router;
 

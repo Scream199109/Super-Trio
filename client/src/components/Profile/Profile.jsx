@@ -1,30 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 
 function Profile(props) {
-
-    fetch("/profile",{
-      headers: {"content-type": "application/json"},
-      method: "GET",
-      body: JSON.stringify()
-    })
-    // .then(res => res.json())
-    .then((data) => {
-      console.log(data);
-    });
-
-
-  //   fetch('/profile')
-  // .then((res) => {
-  //   return res.json();
-  // })
-  // .then((data) => {
-  //   console.log(data);
-  // });
-
+  const {user} = useSelector(state=>state.user)
 
   return (
     <div>
-      <h1>Это профиль</h1> 
+    {user.length > 0 && <><h1>Это профиль</h1>
+    <h1>{user[0].name}</h1></>}
     </div>
   );
 }
