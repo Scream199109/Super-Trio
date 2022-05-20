@@ -4,13 +4,15 @@ import { useEffect } from 'react';
 import TopicField from './TopicField';
 import CardField from './CardField';
 import AllCards from './AllCards';
-function Game(props) {
+
+function Game() {
   const dispatch = useDispatch()
+
   useEffect(() => {
-    const res = fetch('/topic', {})
+     fetch('/topic', {})
       .then(res => res.json())
       .then(data => dispatch({ type: 'ADD_ALL_TOPIC', payload: data }))
-  }, [])
+  }, [dispatch])
 
   const { game } = useSelector(store => store.game)
   const { allTopic } = game
