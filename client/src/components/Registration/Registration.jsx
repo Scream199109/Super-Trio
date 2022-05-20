@@ -12,8 +12,9 @@ function Registration(props) {
       name: event.target.name.value, 
       email: event.target.email.value, 
       password: event.target.password.value,
+      password2: event.target.password2.value
     }
-    console.log('=======>', data);
+    // console.log('=======>', data);
     fetch('/reg', {
       method: 'POST',
       headers: {"Content-type": "Application/json"},
