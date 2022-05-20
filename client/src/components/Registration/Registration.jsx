@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addUserAC } from '../../redux/actionCreators/userAC';
 
-function Registration(props) {
+function Registration() {
   const navigation= useNavigate()
   const dispatch = useDispatch();
   const [regError, setError] = useState();
+  
   const addUser =  async (event) => {
     event.preventDefault();
     const data = {

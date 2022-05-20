@@ -13,6 +13,6 @@ app.use('/reg', regRouter);
 
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
-app.listen(PORT, () => {
-  console.log(`Server port ${PORT} at started.....`);
-});
+app.use('/', require('./routes/card.routes'));
+
+app.listen(PORT, () => `Server started at port ${PORT}...`);
