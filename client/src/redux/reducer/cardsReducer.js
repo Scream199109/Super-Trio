@@ -1,7 +1,7 @@
 
 const initialState = { card: [] }
 
-export const gameReducer = (state = initialState, action) => {
+export const cardsReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_ALL_CARD':
       return { ...state, card: action.payload }

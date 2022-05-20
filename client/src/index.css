@@ -73,3 +73,7 @@
 .field__card-raw {
   flex: 0 1 75%;
 }
+
+.btn-p {
+  font-size: 25px;
+}
