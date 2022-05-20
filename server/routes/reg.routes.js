@@ -4,9 +4,6 @@ const { User } = require('../db/models');
 // const auth = require('../middleware/authChecker');
 const saltRounds = 7;
 router.route('/')
-  .get((req, res) => {
-    res.render('reg');
-  })
   .post(async (req, res) => {
     const {
       name, email, password,
@@ -17,15 +14,16 @@ router.route('/')
         error: 'Такой пользователь уже существует',
       });
     } else {
-      await User.create({
+      const newUser = await User.create({
         name,
         email,
         password: (await bcrypt.hash(password, saltRounds)),
         score: 0,
       });
-      // req.session.user = thisUser;
-      // req.session.uid = thisUser.id;
-      res.status(200).json(thisUser);
+
+      req.session.user = newUser;
+      req.session.uid = newUser.id;
+      res.status(200).json(newUser);
     }
   });
 

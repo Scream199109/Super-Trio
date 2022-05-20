@@ -8,8 +8,11 @@ router.route('/')
     const thisUser = await User.findOne({ where: { email } });
     if (thisUser && await bcrypt.compare(password, thisUser.password)) {
       req.session.User = thisUser;
+      res.status(200).json(thisUser);
     } else {
-      res.send('error');
+      res.status(404).json({
+        error: 'Неверный email или пароль',
+      });
     }
   });
 

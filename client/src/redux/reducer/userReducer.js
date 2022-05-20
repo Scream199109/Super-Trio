@@ -1,12 +1,16 @@
-import { ADD_USER } from "../actionType/userAT"
+import { ADD_USER, LOG_OUT, LOG_USER } from "../actionType/userAT"
 
-const initialState = { user: [] }
+const initialState = { user: {} }
 
 export const userReducer = (state = initialState, action) => {
 switch (action.type) {
   case ADD_USER:
-    return {...state, user:[...state.user, action.payload]}
-  default:
+    return {...state, user:{id: action.payload.id, email:action.payload.email}}
+    case LOG_USER:
+      return {...state, user:{id: action.payload.id, email:action.payload.email}}
+      case LOG_OUT:
+        return {...state, user:{id: action.payload.id, email:action.payload.email}}
+    default:
     return state
   }
 }

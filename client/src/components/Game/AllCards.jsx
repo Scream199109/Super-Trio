@@ -30,16 +30,7 @@ function AllCards() {
         {allCard?.filter(el => el.topic_id === 4).map((elem => <CardField key={elem.id} card={elem} />))}
       </div>
     </>
-
-  }, [dispatch])
-  const { game } = useSelector(state => state.game)
-  const { allCards } = game
-
-  return (
-    <div className="field__raw">
-      {allCards?.map(card => card.Cards.filter(el => el.id === 1).map(elem => <CardFi
-    </div>
-  );
-}
+    )
+  }
 
 export default AllCards;

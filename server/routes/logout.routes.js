@@ -5,8 +5,7 @@ router.get('/', (req, res) => {
     if (err) {
       return res.redirect('/error');
     }
-    res.clearCookie('user_sid');
-    return res.redirect('/');
+    res.clearCookie('user_uid');
   });
 });
 

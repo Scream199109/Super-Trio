@@ -6,13 +6,17 @@ import '../../null.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Navbar from '../Navbar/Navbar';
-import Home from '../Home/Home';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import store from '../../redux/store';
 import Game from '../Game/Game';
+import Logout from '../Logout/Logout';
+import Home from '../Home/Home';
 function App() {
   return (
+    <>
+  
+      <main>
     <Provider store={store}>
       <BrowserRouter>
         <Navbar />
@@ -21,10 +25,13 @@ function App() {
           <Route path='/game' element={<Game />} />
           <Route path='/reg' element={<Registration />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/reg' element={<Logout />} />
         </Routes>
         <Footer />
       </BrowserRouter>
     </Provider>
+    </main>
+    </>
   );
 }
 //
