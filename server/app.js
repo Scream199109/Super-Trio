@@ -16,4 +16,6 @@ app.use('/registration', regRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/profile', profileRouter);
+// app.use('/', require('./routes/card.routes'));
+
 app.listen(PORT, () => `Server started at port ${PORT}...`);
