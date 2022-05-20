@@ -9,7 +9,8 @@ const logoutRouter = require('./routes/logout.routes');
 
 config(app);
 
-app.use('/registration', regRouter);
+app.use('/reg', regRouter);
+
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/', require('./routes/card.routes'));
