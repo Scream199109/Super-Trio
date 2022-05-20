@@ -1,10 +1,9 @@
 import React from 'react';
 
-function TopicField({ topicName }) {
-  console.log("🚀 ~ TopicField ~ topicName", topicName)
+function TopicField({ topicName, id }) {
   return (
-    <div className="field__topic">{topicName}</div>
-    // <h2>df</h2>
+    <div className="field__topic" id={id}>{topicName}</div>
+
   );
 }
 

@@ -14,9 +14,6 @@ function Game(props) {
 
   const { game } = useSelector(store => store.game)
   const { allTopic } = game
-  console.log("🚀 ~ Game ~ allTopic", allTopic)
-
-
 
   return (
     <div className="container">
