@@ -4,6 +4,7 @@ const { user } = require('../db/models');
 
 router.route('/')
   .get((req, res) => {
+    console.log('>>>>>>>>>>>>>>>>>>>>')
     res.render('login');
   })
 
