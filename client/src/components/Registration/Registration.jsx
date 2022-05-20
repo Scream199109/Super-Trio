@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addUserAC } from '../../redux/actionCreators/userAC';
 
 function Registration(props) {
-  // const navigation= useNavigate()
+  const navigation= useNavigate()
   const dispatch = useDispatch();
-  const addUser = (event) => {
+  const [regError, setError] = useState();
+  const addUser =  async (event) => {
     event.preventDefault();
     const data = {
       name: event.target.name.value, 
@@ -15,14 +16,23 @@ function Registration(props) {
       password2: event.target.password2.value
     }
     // console.log('=======>', data);
-    fetch('/reg', {
+    const response = await fetch('/reg', {
       method: 'POST',
       headers: {"Content-type": "Application/json"},
       body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(data => dispatch(addUserAC(data)))
+    if(!response.ok){
+      const {error} = await response.json()
+      setError(error)
+    } else {
+      const data = await response.json()
+      dispatch(addUserAC(data))
+      navigation('/game')
+    }
+    // .then(res => res.json())
+    // .then(data => dispatch(addUserAC(data)))
   }
+  
 
   return (
     <>
@@ -49,6 +59,7 @@ function Registration(props) {
       </div>
       </div>
       <button type='submit' className='waves-effect waves-light btn-large brown lighten-2'>Зарегистрироваться</button>
+      { regError ? <div className="red-text">{regError}</div> : ''} 
     </form>
   </div>
   </>

@@ -13,8 +13,8 @@ router.route('/')
     } = req.body;
     const thisUser = await User.findOne({ where: { email } });
     if (thisUser) {
-      res.status(401).json({
-        text: 'Такой пользователь уже существует',
+      res.status(404).json({
+        error: 'Такой пользователь уже существует',
       });
     } else {
       await User.create({
@@ -23,9 +23,9 @@ router.route('/')
         password: (await bcrypt.hash(password, saltRounds)),
         score: 0,
       });
-      req.session.user = thisUser;
-      req.session.uid = thisUser.id;
-      res.redirect('/home');
+      // req.session.user = thisUser;
+      // req.session.uid = thisUser.id;
+      res.status(200).json(thisUser);
     }
   });
 

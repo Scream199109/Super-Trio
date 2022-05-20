@@ -8,6 +8,7 @@ import Login from '../Login/Login';
 import { Provider } from 'react-redux';
 import Footer from '../Footer/Footer';
 import store from '../../redux/store';
+import Game from '../Game/Game';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/reg' element={<Registration />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/game'element={<Game />} />
         </Routes>
       </BrowserRouter>
       <Footer/>
