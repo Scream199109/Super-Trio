@@ -1,7 +1,7 @@
 const topics = [
   {
     id: 1,
-    name: 'Эрик',
+    name: 'Цитаты',
   },
   {
     id: 2,
@@ -9,11 +9,11 @@ const topics = [
   },
   {
     id: 3,
-    name: 'Вася',
+    name: 'Фильмы',
   },
   {
     id: 4,
-    name: 'Вася2',
+    name: 'Коты',
   },
 ];
 

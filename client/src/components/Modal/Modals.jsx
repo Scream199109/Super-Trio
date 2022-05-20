@@ -40,11 +40,18 @@ export default function Modals({ card }) {
   }
   const inpAnswer = (event) => {
     event.preventDefault()
-    const data = { answer: event.target.answer.value, card }
-    dispatch({ type: 'ANSWER_PLUS', payload: data })
+    const answer = event.target.answer.value
+    if (answer === card.answer) {
+      const data = { answer, card }
+      dispatch({ type: 'ANSWER_PLUS', payload: data })
+    } else {
+      const data = { answer, card }
+      dispatch({ type: 'ANSWER_MINUS', payload: data })
+    }
+
   }
   const { score } = useSelector(state => state.user)
-  console.log("🚀 ~ Modals ~ score", score)
+  // console.log("🚀 ~ Modals ~ score", score)
   return (
     <div>
       <p className="btn-p">
@@ -69,7 +76,7 @@ export default function Modals({ card }) {
               Вопрос : {card.question}
             </Typography>
             <form onSubmit={inpAnswer}>
-              <TextField id="standard-basic" name='answer' label="Standard" variant="standard" />
+              <TextField id="standard-basic" name='answer' label="Ответ" variant="standard" />
               <Button type='submit' onClick={handleClose} sx={{ mt: '8rem' }} variant="contained">Ответить</Button>
             </form>
 

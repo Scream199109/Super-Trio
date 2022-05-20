@@ -20,7 +20,7 @@ export default function Timer({ handleClose, buttonDisable }) {
 
   useEffect(() => {
 
-    setTimer(30);
+    setTimer(20);
 
   }, []);
   return timer;

@@ -2,21 +2,24 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import TopicField from './TopicField';
-import CardField from './CardField';
 import AllCards from './AllCards';
-function Game(props) {
+
+function Game() {
   const dispatch = useDispatch()
+
   useEffect(() => {
-    const res = fetch('/topic', {})
+    fetch('/topic', {})
       .then(res => res.json())
       .then(data => dispatch({ type: 'ADD_ALL_TOPIC', payload: data }))
-  }, [])
+  }, [dispatch])
 
   const { game } = useSelector(store => store.game)
   const { allTopic } = game
-
+  const { score } = useSelector(state => state.score)
+  console.log("🚀 ~ Game ~ score", score)
   return (
     <div className="container">
+      <h3 className='result' >Счет : {score}</h3>
       <div className="field">
         <div className="field__topic-raw">
           {allTopic?.map(topic => <TopicField key={topic.id} topicName={topic.name} id={topic.id} />)}

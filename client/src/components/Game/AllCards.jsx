@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CardField from './CardField';
 
-function AllCards(props) {
+function AllCards() {
   const dispatch = useDispatch()
   useEffect(() => {
-    const res = fetch('/cards', {})
+    fetch('/cards')
       .then(res => res.json())
       .then(data => dispatch({ type: 'ADD_ALL_CARD', payload: data }))
+
   }, [])
   const { card } = useSelector(state => state.card)
   const { allCard } = card
@@ -27,6 +28,7 @@ function AllCards(props) {
         {allCard?.filter(el => el.topic_id === 4).map((elem => <CardField key={elem.id} card={elem} />))}
       </div>
     </>
+
 
   );
 }
