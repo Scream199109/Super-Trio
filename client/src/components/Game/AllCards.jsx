@@ -14,7 +14,7 @@ function AllCards() {
 
   return (
     <div className="field__raw">
-      {allCards?.map(card => card.Cards.filter(el => el.id === 1).map(elem => <CardField key={elem.id} price={elem.price} />))}
+      {allCards?.map(card => card.Cards.filter(el => el.id === 1).map(elem => <CardFi
     </div>
   );
 }
