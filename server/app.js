@@ -11,8 +11,12 @@ const profileRouter = require('./routes/profile.routes');
 
 config(app);
 
+
 // app.use('/', homeRouter);
-app.use('/registration', regRouter);
+
+app.use('/reg', regRouter);
+
+
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/profile', profileRouter);

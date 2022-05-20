@@ -1,8 +1,11 @@
 import React from 'react';
+import Modals from '../Modal/Modals';
 
-function CardField({ price }) {
+function CardField({ card }) {
   return (
-    <div className="field__card">{price}</div>
+    <div className="field__card">
+      <Modals card={card} />
+    </div>
   );
 }
 

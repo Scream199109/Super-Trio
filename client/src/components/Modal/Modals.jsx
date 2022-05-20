@@ -5,7 +5,9 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import Timer from '../Timer/Timer'
+import { fontSize } from '@mui/system';
+import { TextField } from '@mui/material';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -16,17 +18,30 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  height: 300
+  height: 300,
+  display: 'flex',
+  flexDirection: 'column',
+  fontSize: '2rem',
+  justifyContent: 'space-Around'
 };
 
-export default function Modals() {
+export default function Modals({ card }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const [disable, setDisable] = React.useState(false);
+  const buttonDisable = () => {
+    setDisable(true)
+  }
+  const inpAnswer = (event) => {
+    event.preventDefault()
+  }
   return (
     <div>
-      <Button onClick={handleOpen} sx={{ p: '4rem' }}>500</Button>
+      <p className="btn-p">
+        <Button onClick={handleOpen} size='large' disabled={disable} sx={{ p: '4rem', size: 'large' }}>{card.price}</Button>
+
+      </p>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -40,12 +55,16 @@ export default function Modals() {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
+            <Timer handleClose={handleClose} buttonDisable={buttonDisable} />
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              Вопрос : {card.question}
             </Typography>
+            <form >
+              <TextField id="standard-basic" name='answer' label="Standard" variant="standard" />
+              <Button type='submit' variant="contained">Ответить</Button>
+            </form>
+
+
           </Box>
         </Fade>
       </Modal>

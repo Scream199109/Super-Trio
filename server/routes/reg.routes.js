@@ -1,40 +1,31 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { user } = require('../db/models');
+const { User } = require('../db/models');
 // const auth = require('../middleware/authChecker');
-
+const saltRounds = 7;
 router.route('/')
   .get((req, res) => {
     res.render('reg');
   })
   .post(async (req, res) => {
     const {
-      name, email, password, role,
+      name, email, password,
     } = req.body;
-    const thisUser = await user.findOne({ where: { email } });
-    if (!thisUser && role === 'manager') {
-      await user.create({
+    const thisUser = await User.findOne({ where: { email } });
+    if (thisUser) {
+      res.status(404).json({
+        error: 'Такой пользователь уже существует',
+      });
+    } else {
+      await User.create({
         name,
         email,
-        password: (await bcrypt.hash(password, 10)),
-        roleManager: true,
-        roleDirector: false,
+        password: (await bcrypt.hash(password, saltRounds)),
+        score: 0,
       });
-      const thisUser1 = await user.findOne({ where: { email } });
-      req.session.user = thisUser1;
-      res.redirect('/');
-    } else if (!thisUser && role === 'director') {
-      await user.create({
-        name,
-        email,
-        password: (await bcrypt.hash(password, 10)),
-        roleManager: false,
-        roleDirector: true,
-      });
-      const thisUser1 = await user.findOne({ where: { email } });
-      req.session.user = thisUser1;
-      res.redirect('/');
-      // res.sendStatus(400);Рег
+      // req.session.user = thisUser;
+      // req.session.uid = thisUser.id;
+      res.status(200).json(thisUser);
     }
   });
 
