@@ -7,7 +7,6 @@ router.route('/')
     res.status(200).json({ allUsers });
   });
 
-
 module.exports = router;
 
 // if (req.session.User) {

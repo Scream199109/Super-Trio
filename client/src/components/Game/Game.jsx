@@ -16,7 +16,6 @@ function Game() {
   const { game } = useSelector(store => store.game)
   const { allTopic } = game
   const { score } = useSelector(state => state.score)
-  console.log("🚀 ~ Game ~ score", score)
   return (
     <div className="container">
       <h3 className='result' >Счет : {score}</h3>

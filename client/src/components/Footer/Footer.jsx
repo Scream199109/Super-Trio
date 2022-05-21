@@ -3,19 +3,19 @@ import React from 'react';
 function Footer(props) {
   return (
     <footer className="page-footer" >
-    <div className="container">
-      <div className="row">
-        <div className="col l4 s6">
-          <h5 className="white-text">ooo</h5>
+      <div className="container">
+        <div className="row">
+          <div className='footer-one'>
+            <h3 className="white-text foot">OLESYA RUSLAN NIKOLAY</h3>
+          </div>
         </div>
       </div>
-    </div>
-    <div className="footer-copyright">
-      <div className="container">
-      © 2022 Made thre-'O'
+      <div className="footer-copyright">
+        <div className="container foot">
+          © 2022 Made BY thre-'O'
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer >
   );
 }
 

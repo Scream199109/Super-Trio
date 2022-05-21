@@ -9,7 +9,7 @@ import Timer from '../Timer/Timer'
 import { TextField } from '@mui/material';
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { useRef } from 'react'
+import { useEffect } from 'react'
 const style = {
   position: 'absolute',
   top: '50%',
@@ -46,11 +46,14 @@ export default function Modals({ card }) {
       dispatch({ type: 'ANSWER_PLUS', payload: data })
     } else {
       const data = { answer, card }
+      const rightAnswer = card.answer
       dispatch({ type: 'ANSWER_MINUS', payload: data })
     }
-
   }
   const { score } = useSelector(state => state.user)
+  // useEffect(() => {
+  //   setTimeout(handleClose, 5000)
+  // }, [score])
   // console.log("🚀 ~ Modals ~ score", score)
   return (
     <div>
@@ -83,6 +86,6 @@ export default function Modals({ card }) {
           </Box>
         </Fade>
       </Modal>
-    </div>
+    </div >
   );
 }
