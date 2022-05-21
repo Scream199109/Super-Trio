@@ -11,9 +11,7 @@ function AllCards() {
 
   }, [])
   const { card } = useSelector(state => state.card)
-  console.log("🚀 ~ AllCards ~ card", card)
   const { allCard } = card
-  console.log("🚀 ~ AllCards ~ allCards", allCard)
 
   return (
     <>
@@ -31,14 +29,7 @@ function AllCards() {
       </div>
     </>
 
-  }, [dispatch])
-  const { game } = useSelector(state => state.game)
-  const { allCards } = game
 
-  return (
-    <div className="field__raw">
-      {allCards?.map(card => card.Cards.filter(el => el.id === 1).map(elem => <CardFi
-    </div>
   );
 }
 

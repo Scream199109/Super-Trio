@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 export default function Timer({ handleClose, buttonDisable }) {
   const [timer, setTimer] = useState(5);
-  console.log("🚀 ~ Timer ~ timer", timer)
 
   useEffect(() => {
     if (timer === 0) {
@@ -21,7 +20,7 @@ export default function Timer({ handleClose, buttonDisable }) {
 
   useEffect(() => {
 
-    setTimer(5);
+    setTimer(20);
 
   }, []);
   return timer;

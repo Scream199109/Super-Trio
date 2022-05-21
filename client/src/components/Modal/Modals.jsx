@@ -6,36 +6,55 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Timer from '../Timer/Timer'
-import { fontSize } from '@mui/system';
 import { TextField } from '@mui/material';
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 500,
+  width: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  height: 300,
+  height: 400,
   display: 'flex',
   flexDirection: 'column',
   fontSize: '2rem',
-  justifyContent: 'space-Around'
+  justifyContent: 'space-Around',
+  alignItems: 'center'
 };
 
 export default function Modals({ card }) {
+  const dispatch = useDispatch()
+  // const inputEl = useRef(null)
   const [open, setOpen] = React.useState(false);
+  const [disable, setDisable] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [disable, setDisable] = React.useState(false);
   const buttonDisable = () => {
     setDisable(true)
   }
   const inpAnswer = (event) => {
     event.preventDefault()
+    const answer = event.target.answer.value
+    if (answer === card.answer) {
+      const data = { answer, card }
+      dispatch({ type: 'ANSWER_PLUS', payload: data })
+    } else {
+      const data = { answer, card }
+      const rightAnswer = card.answer
+      dispatch({ type: 'ANSWER_MINUS', payload: data })
+    }
   }
+  const { score } = useSelector(state => state.user)
+  // useEffect(() => {
+  //   setTimeout(handleClose, 5000)
+  // }, [score])
+  // console.log("🚀 ~ Modals ~ score", score)
   return (
     <div>
       <p className="btn-p">
@@ -59,15 +78,14 @@ export default function Modals({ card }) {
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               Вопрос : {card.question}
             </Typography>
-            <form >
-              <TextField id="standard-basic" name='answer' label="Standard" variant="standard" />
-              <Button type='submit' variant="contained">Ответить</Button>
+            <form onSubmit={inpAnswer}>
+              <TextField id="standard-basic" name='answer' label="Ответ" variant="standard" />
+              <Button type='submit' onClick={handleClose} sx={{ mt: '8rem' }} variant="contained">Ответить</Button>
             </form>
-
 
           </Box>
         </Fade>
       </Modal>
-    </div>
+    </div >
   );
 }

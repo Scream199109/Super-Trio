@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { logUserAC } from '../../redux/actionCreators/userAC';
 
 
 function Login() {
@@ -23,25 +24,27 @@ function Login() {
       setError(error)
     } else {
       const data = await response.json()
+      dispatch(logUserAC(data))
       navigation('/game')
     }
   }
   return (
     <>
       <div className="container">
+
         <form className="container" onSubmit={addUser}>
           <div className="container">
             <div className="container">
-              <input id="email" type="email" className="validate" placeholder='Введите Email' />
+              <input id="email" type="email" className="validate" placeholder='Введите Email' required />
             </div>
             <div className="container">
               <div className="input-field col s12">
-                <input id="password" type="password" className="validate" placeholder='Введите пароль' />
+                <input id="password" type="password" className="validate" placeholder='Введите пароль' required />
                 {regError ? <div className="red-text">{regError}</div> : ''}
               </div>
             </div>
           </div>
-          <button type='submite' >Войти</button>
+          <button type='submite' className='waves-effect waves-light btn-large brown lighten-2' id='btn-log'>Войти</button>
         </form>
       </div>
     </>
